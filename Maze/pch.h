@@ -3,13 +3,19 @@
 #include "Types.h"
 #include <windows.h>
 #include <iostream>
-
 using namespace std;
 
+// class vs struct
 struct Pos
 {
-	Pos() {}
-	Pos(int32 y, int32 x) : y(y), x(x) {}
+	Pos()
+	{
+	}
+
+	Pos(int y, int x) : y(y), x(x)
+	{
+
+	}
 
 	bool operator==(const Pos& other)
 	{
@@ -26,7 +32,6 @@ struct Pos
 		Pos ret;
 		ret.y = y + other.y;
 		ret.x = x + other.x;
-
 		return ret;
 	}
 
@@ -34,7 +39,6 @@ struct Pos
 	{
 		y += other.y;
 		x += other.x;
-
 		return *this;
 	}
 

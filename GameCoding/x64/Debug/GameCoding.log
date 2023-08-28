@@ -1,5 +1,2 @@
 ﻿  GameCoding.cpp
-D:\GitRepository\Study\GameCoding\GameCoding.cpp(14,2): error C2365: 'RED': 재정의: 이전 정의는 '열거자'입니다.
-D:\GitRepository\Study\GameCoding\GameCoding.cpp(8,2): message : 'RED' 선언을 참조하십시오.
-D:\GitRepository\Study\GameCoding\GameCoding.cpp(15,2): error C2365: 'GREEN': 재정의: 이전 정의는 '열거자'입니다.
-D:\GitRepository\Study\GameCoding\GameCoding.cpp(9,2): message : 'GREEN' 선언을 참조하십시오.
+  GameCoding.vcxproj -> D:\GitRepository\Study\x64\Debug\GameCoding.exe

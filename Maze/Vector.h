@@ -1,11 +1,9 @@
 #pragma once
-#include "pch.h"
 #include <assert.h>
 
+template<typename T>
 class Vector
 {
-	using T = int;
-
 public:
 	explicit Vector()
 	{
@@ -13,12 +11,13 @@ public:
 
 	~Vector()
 	{
-		if(_buffer)
+		if (_buffer)
 			delete[] _buffer;
 	}
 
 	void clear()
 	{
+		// TODO
 		if (_buffer)
 		{
 			delete[] _buffer;
@@ -30,6 +29,7 @@ public:
 
 	void push_back(const T& data)
 	{
+		// TODO
 		if (_size == _capacity)
 		{
 			// 증설 작업
@@ -42,19 +42,27 @@ public:
 
 		// 데이터 저장
 		_buffer[_size] = data;
-		// 데이터 갯수 증가
+
+		// 데이터 개수 증가
 		_size++;
 	}
 
 	void pop_back()
 	{
-		// 소멸
+		// TODO : 소멸
 		_size--;
 	}
 
 	T& back()
 	{
 		return _buffer[_size - 1];
+	}
+
+	void resize(int size)
+	{
+		// TODO
+		reserve(size);
+		_size = size;
 	}
 
 	void reserve(int capacity)
@@ -86,7 +94,7 @@ public:
 	int capacity() { return _capacity; }
 
 private:
-	T* _buffer = nullptr;
+	T*		_buffer = nullptr;
 	int		_size = 0;
 	int		_capacity = 0;
 };

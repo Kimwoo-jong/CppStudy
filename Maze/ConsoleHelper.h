@@ -7,7 +7,7 @@ enum class ConsoleColor
 	GREEN = FOREGROUND_GREEN,
 	BLUE = FOREGROUND_BLUE,
 	YELLOW = RED | GREEN,
-	WHITE = RED | GREEN | BLUE
+	WHITE = RED | GREEN | BLUE,
 };
 
 class ConsoleHelper
@@ -17,3 +17,4 @@ public:
 	static void SetCursorColor(ConsoleColor color);
 	static void ShowConsoleCursor(bool flag);
 };
+
