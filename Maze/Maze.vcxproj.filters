@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{e62af6a4-f1e8-446a-9a96-6e3a1e00bc86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Board">
+      <UniqueIdentifier>{0b7f5fb6-d1fe-43ee-bac8-8db397a54791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Maze.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Array.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Board</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleHelper.cpp">
+      <Filter>Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Board</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="List.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Array.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Board</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleHelper.h">
+      <Filter>Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Board</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
