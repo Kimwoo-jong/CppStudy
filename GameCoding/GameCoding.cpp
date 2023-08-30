@@ -3,10 +3,10 @@ using namespace std;
 #include <vector>
 #include <queue>
 
-// 깊이 우선 탐색
 // DFS (depth first search)
-// DFS = 재귀함수
-// BFS = 
+// DFS = 재귀함수 = 스택
+// BFS (breath first search)
+// BFS = 큐
 
 struct Vertex
 {
@@ -16,8 +16,8 @@ struct Vertex
 vector<Vertex> vertices;
 vector<vector<int>> adjacent;
 
-// 내가 방문한 목록
-vector<bool> visited;
+// 발견한
+vector<bool> discovered;
 
 void CreateGraph()
 {
@@ -43,53 +43,69 @@ void CreateGraph()
 
 }
 
-void Dfs(int here)
+void Bfs(int here)
 {
-	// 방문 도장
-	visited[here] = true;
+	// ex) 누구에 의해서 발견되었는지
+	vector<int> parent(6, -1);
+	// ex) 시작점에서 얼마만큼 떨어져 있는지
+	vector<int> dist(6, -1);
 
-	cout << "Visited : " << here << endl;
+	queue<int> q;
+	q.push(here);
+	discovered[here] = true;
+	//
+	parent[here] = here;
+	dist[here] = 0;
 
-	// 인접 리스트 O(V + E)
-	/*const int size = adjacent[here].size();
-	for (int i = 0; i < size; i++)
+	while (q.empty() == false)
 	{
-		int there = adjacent[here][i];
-		
-		if (visited[there] == false)
-			Dfs(there);
-	}*/
+		here = q.front();
+		q.pop();
 
-	// 인접 행렬 O(V^2)
-	for (int there = 0; there < 6; there++)
-	{
-		// 길이 있는지
-		if(adjacent[here][there] == 0)
-			continue;
+		// 방문 도장
+		cout << "Visited : " << here << endl;
 
-		// 아직 방문하지 않은 곳에 한해서 방문
-		if (visited[there] == false)
-			Dfs(there);
+		for (int there = 0; there < 6; there++)
+		{
+			if(adjacent[here][there] == 0)
+				continue;
+			if(discovered[there])
+				continue;
+
+			q.push(there);
+			discovered[there] = true;
+			//
+			parent[there] = here;
+			dist[there] = dist[here] + 1;
+		}
+
+		/*int size = adjacent[here].size();
+		for (int i = 0; i < size; i++)
+		{
+			int there = adjacent[here][i];
+			if(discovered[there])
+				continue;
+
+			q.push(there);
+			discovered[there] = true;
+		}*/
 	}
 }
 
-void DfsAll()
+void BfsAll()
 {
-	visited = vector<bool>(6, false);
+	discovered = vector<bool>(6, false);
 
 	for (int i = 0; i < 6; i++)
 	{
-		if (visited[i] == false)
-		{
-			Dfs(i);
-			cout << "hi" << endl;
-		}
+		if (discovered[i] == false)
+			Bfs(i);
 	}
 }
 
 int main()
 {
 	CreateGraph();
-
-	DfsAll();
+	
+	Bfs(0);
 }
