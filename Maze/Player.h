@@ -19,7 +19,8 @@ public:
 	bool		CanGo(Pos pos);
 
 private:
-	void		CalculatePath();
+	void		CalculatePath_RightHand();
+	void		CalculatePath_BFS();
 
 private:
 	Pos			 _pos;
@@ -27,7 +28,7 @@ private:
 	Board*		 _board = nullptr;
 
 	// 동적 배열
-	Vector<Pos>	 _path;
+	vector<Pos>	 _path;
 	int32 		 _pathIndex = 0;
 	uint64		 _sumTick = 0;
 };
