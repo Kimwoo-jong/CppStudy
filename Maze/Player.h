@@ -21,6 +21,7 @@ public:
 private:
 	void		CalculatePath_RightHand();
 	void		CalculatePath_BFS();
+	void		CalculatePath_Astar();
 
 private:
 	Pos			 _pos;
