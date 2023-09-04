@@ -3,15 +3,59 @@ using namespace std;
 #include <vector>
 #include <queue>
 
-// 함수 포인터의 단점
-// - 시그니처가 안 맞으면 사용 X
-// - 상태를 가질 수 없음
-
 int main()
 {
-	// 멤버 함수 포인터 (정적/전역 함수랑 다르다)
+	// size(resize)
+	// capacity(reserve)
+	// 삽입/삭제
+	// - 시작	O(N)
+	// - 중간	O(N)
+	// - 끝		O(1)
+	// push_back, front, back
+	// 임의 접근 v[i]
+	// v.remove(10)?
 
-	// 클라 -> 나 (10)번 유저 공격할래
-	// 클라2 -> 나 (10, 20) 좌표로 이동할래
-	// 함수 포인터는 바인딩이 되지 않는다. (데이터를 포함할 수 없음 : 매번 달라지기 때문)
+	// 추가
+	// 삭제
+	// 순회
+	// 검색
+
+	//vector<int> v(5);
+	//vector<int> v(5, -1);
+	//vector<int> v{1, 2, 3, 4, 5};
+
+	//v.clear();
+
+	// size		- 줄어든다.
+	// capacity - 줄어들지 않음.
+
+	/*cout << v.size() << endl;
+	cout << v.capacity() << endl;*/
+
+	{
+		// iterator ? 반복자 포인터?
+		vector<int> v{1, 2, 3, 4, 5};
+
+		vector<int>::iterator it;
+
+		for (it = v.begin(); it != v.end(); it++)
+		{
+			int data = *it;
+			if (data == 3)
+			{
+				// 찾음
+				break;
+			}
+		}
+
+		if (it != v.end())
+		{
+			cout << "찾음" << endl;
+			v.erase(it);
+		}
+		else
+		{
+			cout << "찾지 못함" << endl;
+		}
+	}
 }
