@@ -4,63 +4,86 @@ using namespace std;
 #include <list>
 #include <queue>
 #include <map>
-#include "BinarySearchTree.h"
 
-// 이진 탐색 (binary search) -> O(logN) 데이터 추가/삭제
-// 이진 탐색 트리 -> 
+class Player
+{
+public:
+	Player() : _id(0) {}
+	Player(int id) : _id(id) {}
 
-//vector<int> numbers;
-//
-//void BinarySearch(int N)
+public:
+	int _id = 0;
+};
+
+// 몰라도 사용이 가능하긴 함
+//template<typename T, typename U>
+//struct Pair
 //{
-//	int left = 0;
-//	int right = numbers.size() - 1;
+//	T first;
+//	U second;
+//};
 //
-//	while (left <= right)
-//	{
-//		cout << "탐색 범위 : " << left << " ~ " << right << endl;
-//
-//		int mid = (left + right) / 2;
-//
-//		if (N < numbers[mid])
-//		{
-//			cout << N << " < " << numbers[mid] << endl;
-//			right = mid - 1;
-//		}
-//		else if (N > numbers[mid])
-//		{
-//			cout << N << " > " << numbers[mid] << endl;
-//			left = mid + 1;
-//		}
-//		else
-//		{
-//			cout << "찾았음!" << endl;
-//			break;
-//		}
-//	}
+//template<typename T, typename U>
+//auto MakePair(T first, U second)
+//{
+//	return std::pair<T, U>(first, second);
 //}
 
 int main()
 {
-	// O(N)
-	// [1][8][15][23][32][44][56][63][81][91]
+	vector<Player*> v;
 
-	// vector를 이용하여 binarysearch
+	v.push_back(new Player(100));
+	v.push_back(new Player(300));
+	v.push_back(new Player(200));
+	v.push_back(new Player(500));
+	v.push_back(new Player(400));
 
-	// O(logN)
-	/*numbers = { 1, 8, 15, 23, 32, 44, 56, 63, 81, 91 };
-	BinarySearch(45);*/
+	// (key, value)
+	// C++ vector = C# List
+	// C++ hash_map = C# Dictionary
+	map<int, Player*> m;
+	// 추가
+	// 찾기
+	// 삭제
+	// 순회
 
-	BinarySearchTree bst;
+	for (Player* player : v)
+	{
+		/*int key = player->_id;
+		Player* data = player;
 
-	bst.Insert(20);
-	bst.Insert(30);
-	bst.Insert(10);
+		MakePair(key, data);*/
 
-	bst.Insert(25);
-	bst.Insert(26);
-	bst.Insert(40);
-	bst.Insert(50);
+		m.insert(make_pair(player->_id, player));
+	}
 
-	bst.Print();
+	//
+	auto it = m.find(300);
+
+	if (it != m.end())
+	{
+		int key = (*it).first;
+		Player* value = it->second;
+	}
+	else
+	{
+		cout << "없음" << endl;
+	}
+
+	m.erase(200);
+
+	// 순회
+	for (auto it = m.begin(); it != m.end(); it++)
+	{
+		int key = it->first;
+		Player* p = it->second;
+	}
+
+	// 데이터가 있냐 없냐
+	// 사이즈가 0인지 보는 함수
+	m.empty();
+
+	// 갖고 오되, 없으면 기본값으로 추가.
+	Player* p = m[1000];
 }

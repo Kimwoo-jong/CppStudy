@@ -1,2 +1,3 @@
 ﻿  GameCoding.cpp
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(48,21): warning C4101: 'p' :참조되지 않은 지역 변수입니다.
   GameCoding.vcxproj -> D:\GitRepository\Study\x64\Debug\GameCoding.exe
