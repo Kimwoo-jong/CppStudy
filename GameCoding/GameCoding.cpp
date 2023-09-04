@@ -3,33 +3,64 @@ using namespace std;
 #include <vector>
 #include <list>
 #include <queue>
-#include "List.h"
+#include <map>
+#include "BinarySearchTree.h"
+
+// 이진 탐색 (binary search) -> O(logN) 데이터 추가/삭제
+// 이진 탐색 트리 -> 
+
+//vector<int> numbers;
+//
+//void BinarySearch(int N)
+//{
+//	int left = 0;
+//	int right = numbers.size() - 1;
+//
+//	while (left <= right)
+//	{
+//		cout << "탐색 범위 : " << left << " ~ " << right << endl;
+//
+//		int mid = (left + right) / 2;
+//
+//		if (N < numbers[mid])
+//		{
+//			cout << N << " < " << numbers[mid] << endl;
+//			right = mid - 1;
+//		}
+//		else if (N > numbers[mid])
+//		{
+//			cout << N << " > " << numbers[mid] << endl;
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			cout << "찾았음!" << endl;
+//			break;
+//		}
+//	}
+//}
 
 int main()
 {
-	// size (resize)
-	// capacity (reserve)
-	// 삽입/삭제
-	// - 시작		O(1)
-	// - 중간		O(1)
-	// - 끝			O(1)
-	// front		O(1)
-	// back			O(1)
-	// push_front	O(1)
-	// push_back	O(1)
-	// 임의 접근 li[2]  X
+	// O(N)
+	// [1][8][15][23][32][44][56][63][81][91]
 
-	List<int> li;
+	// vector를 이용하여 binarysearch
 
-	li.AddAtTail(10);
-	li.AddAtTail(20);
-	li.AddAtTail(30);
+	// O(logN)
+	/*numbers = { 1, 8, 15, 23, 32, 44, 56, 63, 81, 91 };
+	BinarySearch(45);*/
 
-	for (List<int>::iterator it = li.begin(); it != li.end(); it++)
-	{
-		int value = *it;
+	BinarySearchTree bst;
 
-		if (value == 3)
-			break;
-	}
+	bst.Insert(20);
+	bst.Insert(30);
+	bst.Insert(10);
+
+	bst.Insert(25);
+	bst.Insert(26);
+	bst.Insert(40);
+	bst.Insert(50);
+
+	bst.Print();
 }
