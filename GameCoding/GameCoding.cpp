@@ -7,45 +7,41 @@
 #include <algorithm>
 using namespace std;
 
-int Partition(vector<int>& v, int left, int right)
-{
-	int pivot = v[left];
-	int low = left + 1;
-	int high = right;
 
-	while (low <= high)
-	{
-		while (low <= right && pivot >= v[low])
-			low++;
-
-		while (high >= left + 1 && pivot <= v[high])
-			high--;
-
-		if (low < high)
-			swap(v[low], v[high]);
-	}
-
-	swap(v[left], v[high]);
-	return high;
-}
-
-void QuickSort(vector<int>& v, int left, int right)
-{
-	if (left > right)
-		return;
-
-	int pivot = Partition(v, left, right);
-	QuickSort(v, left, pivot - 1);
-	QuickSort(v, pivot + 1, right);
-
-}
-
-// Quick Sort
-// O(NLogN) << 평균적인 시간 복잡도
 
 int main()
 {
-	vector<int> v{1, 5, 3, 4, 2, 9, 10};
+	std::string str = "DevWooj";
+	std::string str2 = "DevWooj";
 
-	QuickSort(v, 0, v.size() - 1);
+	// 1) 비교 -> ID/PW 맞는지
+	if (str == str2)
+	{
+	}
+
+	// 2) 복사
+	string str3;
+	str3 = str;
+
+	// 3) 추가 ()
+	//str.append("1231231232");
+	str += "1234";
+
+	// 4) 찾기
+	auto c = str.find("Dev");
+	if (c == std::string::npos)
+	{
+		cout << "Not Found" << endl;
+	}
+
+	// 5) 교체
+	string chatStr = "SHIT !!!";
+	string findStr = "SHIT";
+	string replaceStr = "****";
+
+	chatStr.replace(chatStr.find(findStr), findStr.length(), replaceStr);
+
+	string str4 = str.substr(0, 3);
+
+	const char* name = str.c_str();
 }
