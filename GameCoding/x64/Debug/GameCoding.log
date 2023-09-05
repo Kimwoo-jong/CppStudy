@@ -1,3 +1,7 @@
 ﻿  GameCoding.cpp
-D:\GitRepository\Study\GameCoding\GameCoding.cpp(48,21): warning C4101: 'p' :참조되지 않은 지역 변수입니다.
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(18,25): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(18,17): warning C4267: '초기화 중': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(37,25): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(37,17): warning C4267: '초기화 중': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\GitRepository\Study\GameCoding\GameCoding.cpp(157,26): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   GameCoding.vcxproj -> D:\GitRepository\Study\x64\Debug\GameCoding.exe
