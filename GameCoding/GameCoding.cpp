@@ -6,54 +6,123 @@ using namespace std;
 #include <map>
 #include <unordered_map>
 
-// 살을 내주고 뼈를 취한다!
-// 메모리를 팔아서 (CPU)성능을 얻겠다.
+enum class ObjectType
+{
+	Player,
+	Monster,
+	Projectile,
+	Env
+};
 
-// 아파트 우편함
-// [201][202][203][204][205]
-// [101][102][103][104][105]
-// O(1)
+class Object
+{
+public:
+	Object(ObjectType type) : _type(type) { }
 
-// 1 ~ 999
-// [1][2][3][4] ... [999]
+	virtual ~Object() { }
+	virtual void Init()
+	{
 
-// 키를 알면 빠르게 찾을 수 있다. O(1)
+	}
 
-// hash 기법
-// 보안
-// 예전에는 id :  / pw : 의 공간을 따로 만들어 저장했음 -> 보안 취약
-// pw -> hash(!@#$) = asjkdwqjldknqwklcnkln@skdnwkdn2 > hash 기법을 사용하여 이전보다 취약점이 사라짐
+	virtual void Update()
+	{
 
+	}
+
+	ObjectType GetObjectType() { return _type; }
+
+	int _id;
+	ObjectType _type;
+};
+
+class Player : public Object
+{
+public:
+	Player() : Object(ObjectType::Player) {}
+	Player(int id) : Object(ObjectType::Player) { }
+};
+
+class Monster : public Object
+{
+public:
+	Monster() : Object(ObjectType::Monster) { }
+
+};
+
+class Projectile : public Object
+{
+public:
+	Projectile() : Object(ObjectType::Projectile) { }
+
+};
+
+class Env : public Object
+{
+public:
+	Env() : Object(ObjectType::Env) { }
+
+};
+
+class Field
+{
+public:
+	static Field* GetInstance()
+	{
+		static Field field;
+		return &field;
+	}
+
+	void Add(Object* player)
+	{
+		_objects.insert(make_pair(player->_id, player));
+	}
+
+	void Remove(int id)
+	{
+		_objects.erase(id);
+	}
+
+	void Update()
+	{
+		for (auto& item : _objects)
+		{
+			Object* obj = item.second;
+			obj->Update();
+		}
+	}
+
+	Object* Get(int id)
+	{
+		auto findIt = _objects.find(id);
+		if (findIt != _objects.end())
+			return findIt->second;
+
+		return nullptr;
+	}
+
+	unordered_map<int, Object*> _objects;
+
+	//unordered_map<int, Player*> _players;
+	//unordered_map<int, Monster*> _monsters;
+	//unordered_map<int, Projectile*> _projectiles;
+	//unordered_map<int, Env*> _env;
+};
 int main()
 {
-	// hash_map
-	 
-	// O(1)
-	unordered_map<int, int> um;
-	// 추가 
-	// 삭제 
-	// 찾기 
-	// 순회 
+	// 클래스의 상속 시 상위 객체에는 virtual 소멸자를 생성해야 함.
+	// 상속 받은 하위 객체의 소멸자가 실행되지 않기 때문
+	Field::GetInstance()->Add(new Player());
 
-	um.insert(make_pair(10, 100));
-
-	um[20] = 200;
-
-	auto findIt = um.find(10);
-	if (findIt != um.end())
+	Object* obj = Field::GetInstance()->Get(1);
+	if (obj && obj->GetObjectType() == ObjectType::Player)
 	{
-		cout << "찾음" << endl;
-	}
-	else
-	{
-		cout << "없음" << endl;
+		Player* player = static_cast<Player*>(obj);
 	}
 
-	um.erase(10);
-
-	for (auto it = um.begin(); it != um.end(); it++)
+	Player* player = dynamic_cast<Player*>(Field::GetInstance()->Get(1));
+	if (player)
 	{
-		int key = it->first;
-		int value = it->second;
+
 	}
 }
