@@ -4,86 +4,56 @@ using namespace std;
 #include <list>
 #include <queue>
 #include <map>
+#include <unordered_map>
 
-class Player
-{
-public:
-	Player() : _id(0) {}
-	Player(int id) : _id(id) {}
+// 살을 내주고 뼈를 취한다!
+// 메모리를 팔아서 (CPU)성능을 얻겠다.
 
-public:
-	int _id = 0;
-};
+// 아파트 우편함
+// [201][202][203][204][205]
+// [101][102][103][104][105]
+// O(1)
 
-// 몰라도 사용이 가능하긴 함
-//template<typename T, typename U>
-//struct Pair
-//{
-//	T first;
-//	U second;
-//};
-//
-//template<typename T, typename U>
-//auto MakePair(T first, U second)
-//{
-//	return std::pair<T, U>(first, second);
-//}
+// 1 ~ 999
+// [1][2][3][4] ... [999]
+
+// 키를 알면 빠르게 찾을 수 있다. O(1)
+
+// hash 기법
+// 보안
+// 예전에는 id :  / pw : 의 공간을 따로 만들어 저장했음 -> 보안 취약
+// pw -> hash(!@#$) = asjkdwqjldknqwklcnkln@skdnwkdn2 > hash 기법을 사용하여 이전보다 취약점이 사라짐
 
 int main()
 {
-	vector<Player*> v;
+	// hash_map
+	 
+	// O(1)
+	unordered_map<int, int> um;
+	// 추가 
+	// 삭제 
+	// 찾기 
+	// 순회 
 
-	v.push_back(new Player(100));
-	v.push_back(new Player(300));
-	v.push_back(new Player(200));
-	v.push_back(new Player(500));
-	v.push_back(new Player(400));
+	um.insert(make_pair(10, 100));
 
-	// (key, value)
-	// C++ vector = C# List
-	// C++ hash_map = C# Dictionary
-	map<int, Player*> m;
-	// 추가
-	// 찾기
-	// 삭제
-	// 순회
+	um[20] = 200;
 
-	for (Player* player : v)
+	auto findIt = um.find(10);
+	if (findIt != um.end())
 	{
-		/*int key = player->_id;
-		Player* data = player;
-
-		MakePair(key, data);*/
-
-		m.insert(make_pair(player->_id, player));
-	}
-
-	//
-	auto it = m.find(300);
-
-	if (it != m.end())
-	{
-		int key = (*it).first;
-		Player* value = it->second;
+		cout << "찾음" << endl;
 	}
 	else
 	{
 		cout << "없음" << endl;
 	}
 
-	m.erase(200);
+	um.erase(10);
 
-	// 순회
-	for (auto it = m.begin(); it != m.end(); it++)
+	for (auto it = um.begin(); it != um.end(); it++)
 	{
 		int key = it->first;
-		Player* p = it->second;
+		int value = it->second;
 	}
-
-	// 데이터가 있냐 없냐
-	// 사이즈가 0인지 보는 함수
-	m.empty();
-
-	// 갖고 오되, 없으면 기본값으로 추가.
-	Player* p = m[1000];
 }
